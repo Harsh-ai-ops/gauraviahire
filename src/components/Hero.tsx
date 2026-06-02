@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import heroImage from '@/assets/gauravi-hero.png.asset.json'
 
 export function Hero() {
   return (
@@ -6,7 +7,7 @@ export function Hero() {
       {/* Background Image - Responsive */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="/hero-image.jpg"
+          src={heroImage.url}
           alt="Gauravi Ahire"
           className="w-full h-full object-cover object-center"
         />
