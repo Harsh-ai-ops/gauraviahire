@@ -69,7 +69,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Wedding — Aanya & Rohan',
+    title: 'Wedding — Gauravi & Harsh',
     year: '2023',
     location: 'Udaipur, India',
     description: 'Three days of rituals, light and quiet moments between a family reunited.',
