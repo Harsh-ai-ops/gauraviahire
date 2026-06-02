@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import heroImage from '@/assets/gauravi-hero-2.jpeg.asset.json'
 
 export function Hero() {
   return (
@@ -7,7 +6,7 @@ export function Hero() {
       {/* Background Image - Responsive */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src={heroImage.url}
+          src="/hero-image.jpg"
           alt="Gauravi Ahire"
           className="w-full h-full object-cover scale-[1.6] md:scale-100 object-[60%_30%] md:object-[center_85%]"
         />
@@ -24,7 +23,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h1 className="font-display leading-[0.95] tracking-tighter text-[14vw] sm:text-[11vw] md:text-[9vw] lg:text-[8.5vw]">
+            <h1 className="font-display leading-[0.95] tracking-tighter text-[21vw] sm:text-[16.5vw] md:text-[13.5vw] lg:text-[12.75vw]">
               <span className="block text-white">Gauravi</span>
               <span className="block text-white">Ahire</span>
               <span className="block text-white">PHOTOGRAPHY</span>
