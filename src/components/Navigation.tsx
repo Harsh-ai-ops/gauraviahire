@@ -46,7 +46,7 @@ export function Navigation() {
           {/* Mobile Menu Dropdown */}
           <div
             className={cn(
-              'flex flex-col items-start gap-3 mt-6 transition-all duration-300',
+              'flex flex-col items-start gap-3 transition-all duration-300 bg-black/40 backdrop-blur-sm rounded-lg p-4 min-w-[140px]',
               mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
             )}
           >

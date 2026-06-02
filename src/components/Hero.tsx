@@ -8,14 +8,14 @@ export function Hero() {
         <img
           src="/hero-image.jpg"
           alt="Gauravi Ahire"
-          className="w-full h-full object-cover scale-[1.15] md:scale-100 object-[60%_30%] md:object-[center_85%]"
+          className="w-full h-full object-cover object-[60%_30%] md:object-[center_85%]"
         />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-end md:items-center pb-32 md:pb-0 px-6 sm:px-10 md:px-20 lg:px-28">
+      <div className="relative z-10 h-full flex items-end md:items-center pb-16 md:pb-0 px-6 sm:px-10 md:px-20 lg:px-28">
         <div className="w-full max-w-5xl">
           {/* Typography */}
           <motion.div
