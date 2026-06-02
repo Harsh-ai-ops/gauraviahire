@@ -55,7 +55,7 @@ export function About() {
         >
           <h2 className="font-display text-[8vw] lg:text-section leading-none tracking-tight text-gray-300">
             "NAMED BY THE<br />
-            <span className="text-white underline underline-offset-8">2023 APERTURE AWARDS</span><br />
+            <span className="text-white">2023 APERTURE AWARDS</span><br />
             AS ONE OF THE TOP TEN<br />
             PHOTOGRAPHERS IN THE WORLD."
           </h2>
