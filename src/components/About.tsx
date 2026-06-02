@@ -13,7 +13,7 @@ export function About() {
       <div className="max-w-7xl mx-auto">
         {/* Section Label */}
         <motion.div {...fadeInUp} className="mb-16">
-          <span className="text-sm text-gray-500 tracking-widest uppercase">About Bruce</span>
+          <span className="text-sm text-gray-500 tracking-widest uppercase">About Gauravi</span>
           <div className="w-6 h-px bg-gray-600 mt-2" />
         </motion.div>
 
@@ -39,8 +39,9 @@ export function About() {
             className="order-1 lg:order-2 flex items-center"
           >
             <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-              It may not be obvious, but Bruce studied computer science at MIT, 
+              It may not be obvious, but Gauravi studied computer science at MIT, 
               with a minor in visual arts. Preferring lenses to algorithms, 
+
               he quickly abandoned a promising tech career to study Photography 
               and Visual Storytelling at Parsons School of Design in New York.
             </p>
@@ -71,8 +72,9 @@ export function About() {
             className="flex items-center lg:text-right"
           >
             <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-              Bruce spent a little over a year in New York before moving to 
+              Gauravi spent a little over a year in New York before moving to 
               London as a Junior Photographer for Magnum Photos. He met some 
+
               incredible people at the legendary agency, and they're still 
               friends to this day.
             </p>
@@ -98,7 +100,7 @@ export function About() {
           <motion.div {...fadeInUp}>
             <img
               src="https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Bruce shooting for National Geographic"
+              alt="Gauravi shooting for National Geographic"
               className="w-full h-auto grayscale"
             />
             <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
@@ -113,8 +115,9 @@ export function About() {
             className="flex items-center"
           >
             <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-              From London, Bruce moved to Berlin with VII Photo Agency. Where he 
+              From London, Gauravi moved to Berlin with VII Photo Agency. Where he 
               worked under a great Art Director, Hans Mueller. From there he 
+
               went on to build a truly global career, first as Staff Photographer 
               then as Creative Director for the likes of National Geographic, 
               Time Magazine, and The New York Times, before finally going 

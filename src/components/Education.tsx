@@ -49,7 +49,7 @@ export function Education() {
                   Computer Science & Visual Arts
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
-                  Started with algorithms, ended with apertures. Bruce's time at MIT 
+                  Started with algorithms, ended with apertures. Gauravi's time at MIT 
                   gave him a unique perspective on the intersection of technology 
                   and visual storytelling that continues to influence his work today.
                 </p>
@@ -69,7 +69,7 @@ export function Education() {
                   Photography & Visual Storytelling
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
-                  The decision to pursue photography full-time led Bruce to Parsons, 
+                  The decision to pursue photography full-time led Gauravi to Parsons, 
                   where he developed his signature style of documentary portraiture 
                   and learned the fundamentals of visual narrative.
                 </p>
@@ -116,7 +116,7 @@ export function Education() {
                   Documentary Photography Certificate
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
-                  An intensive program at ICP refined Bruce's approach to long-form 
+                  An intensive program at ICP refined Gauravi's approach to long-form 
                   documentary projects and deepened his understanding of photographic 
                   ethics and storytelling responsibility.
                 </p>
