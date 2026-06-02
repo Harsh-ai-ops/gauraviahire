@@ -8,8 +8,6 @@ const navItems = [
   { id: 'skills', label: 'Skills' },
   { id: 'work', label: 'Work' },
   { id: 'education', label: 'Education' },
-  { id: 'writing', label: 'Writing' },
-  { id: 'speaking', label: 'Speaking' },
 ]
 
 const socialLinks = [
