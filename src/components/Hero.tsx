@@ -9,7 +9,7 @@ export function Hero() {
         <img
           src={heroImage.url}
           alt="Gauravi Ahire"
-          className="w-full h-full object-cover object-[center_65%]"
+          className="w-full h-full object-cover object-[center_85%]"
         />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
