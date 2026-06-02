@@ -45,7 +45,7 @@ export function Education() {
               className="flex items-center"
             >
               <div>
-                <h3 className="text-xl lg:text-2xl font-light text-white mb-4">
+                <h3 className="text-xl lg:text-2xl font-light text-white mb-2 md:mb-4">
                   Computer Science & Visual Arts
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
@@ -65,7 +65,7 @@ export function Education() {
               className="flex items-center lg:order-2"
             >
               <div>
-                <h3 className="text-xl lg:text-2xl font-light text-white mb-4">
+                <h3 className="text-xl lg:text-2xl font-light text-white mb-2 md:mb-4">
                   Photography & Visual Storytelling
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
@@ -112,7 +112,7 @@ export function Education() {
               className="flex items-center"
             >
               <div>
-                <h3 className="text-xl lg:text-2xl font-light text-white mb-4">
+                <h3 className="text-xl lg:text-2xl font-light text-white mb-2 md:mb-4">
                   Documentary Photography Certificate
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">

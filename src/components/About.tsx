@@ -51,7 +51,7 @@ export function About() {
         {/* Quote Block */}
         <motion.div
           {...fadeInUp}
-          className="mb-24 lg:mb-32"
+          className="mb-16 lg:mb-32"
         >
           <h2 className="font-display text-[8vw] lg:text-section leading-none tracking-tight text-gray-300">
             "NAMED BY THE<br />
@@ -66,7 +66,7 @@ export function About() {
         </motion.div>
 
         {/* Second Block */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 mb-24 lg:mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 mb-16 lg:mb-32">
           <motion.div
             {...fadeInUp}
             className="flex items-center lg:text-right"

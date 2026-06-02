@@ -95,9 +95,9 @@ const fadeInUp = {
 }
 
 const spanClass: Record<NonNullable<MediaItem['span']>, string> = {
-  tall: 'md:row-span-2 aspect-[3/4] md:aspect-auto',
-  wide: 'md:col-span-2 aspect-[16/10]',
-  square: 'aspect-square',
+  tall: 'md:row-span-2 md:aspect-[3/4] aspect-auto',
+  wide: 'md:col-span-2 md:aspect-[16/10] aspect-auto',
+  square: 'md:aspect-square aspect-auto',
 }
 
 export function Work() {
@@ -121,7 +121,7 @@ export function Work() {
         </motion.h2>
 
         {/* Projects */}
-        <div className="space-y-24 md:space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -148,7 +148,7 @@ export function Work() {
               </div>
 
               {/* Media grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[16rem] md:auto-rows-[20rem] gap-3 md:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[14rem] md:auto-rows-[20rem] gap-3 md:gap-4">
                 {project.media.slice(0, 3).map((item, i) => (
                   <button
                     key={i}
@@ -187,7 +187,7 @@ export function Work() {
               </div>
 
               {/* More button */}
-              <div className="mt-6 text-right">
+              <div className="mt-6 text-center md:text-right">
                 <button
                   onClick={() => setExpandedProject(index)}
                   className="inline-flex items-center gap-2 px-6 py-2 text-sm text-gray-400 border border-gray-700 rounded-full hover:text-white hover:border-white transition-colors"

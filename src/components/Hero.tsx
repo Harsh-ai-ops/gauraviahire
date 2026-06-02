@@ -8,7 +8,7 @@ export function Hero() {
         <img
           src="/hero-image.jpg"
           alt="Gauravi Ahire"
-          className="w-full h-full object-cover scale-[1.6] md:scale-100 object-[60%_30%] md:object-[center_85%]"
+          className="w-full h-full object-cover scale-[1.15] md:scale-100 object-[60%_30%] md:object-[center_85%]"
         />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40 md:bg-black/30" />

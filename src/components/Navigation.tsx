@@ -33,12 +33,12 @@ export function Navigation() {
   return (
     <>
       {/* Mobile Header - Only visible on mobile */}
-      <div className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-start md:hidden">
+      <div className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-start md:hidden bg-gradient-to-b from-black/60 to-transparent">
         {/* Menu Button - Left */}
         <div className="relative">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-sm text-white mix-blend-difference"
+            className="text-sm text-white drop-shadow-lg"
           >
             {mobileMenuOpen ? 'Close' : 'Menu'}
           </button>
@@ -55,7 +55,7 @@ export function Navigation() {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={cn(
-                  'text-sm text-white mix-blend-difference transition-all duration-300 relative py-1',
+                  'text-sm text-white drop-shadow-lg transition-all duration-300 relative py-1',
                   'hover:opacity-60',
                   activeSection === item.id && 'after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-white'
                 )}
@@ -74,7 +74,7 @@ export function Navigation() {
               href={link.href}
               target={link.href.startsWith('mailto') ? undefined : '_blank'}
               rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-              className="text-sm text-white mix-blend-difference hover:opacity-60 transition-opacity"
+              className="text-sm text-white drop-shadow-lg hover:opacity-60 transition-opacity"
             >
               {link.label}
             </a>
