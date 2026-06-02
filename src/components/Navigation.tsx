@@ -12,9 +12,8 @@ const navItems = [
 ]
 
 const socialLinks = [
-  { label: 'Mail', href: 'mailto:bruce@banner.com' },
+  { label: 'Mail', href: 'mailto:hello@gauravi.com' },
   { label: 'Instagram', href: 'https://instagram.com' },
-  { label: 'Vimeo', href: 'https://vimeo.com' },
 ]
 
 export function Navigation() {
