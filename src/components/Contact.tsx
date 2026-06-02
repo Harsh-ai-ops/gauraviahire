@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 
 const contacts = [
-  { label: 'UNITED STATES', type: 'location', link: '#' },
-  { label: 'UNITED KINGDOM', type: 'location', link: '#' },
+  { label: 'EMAIL', type: 'email', detail: 'hello@gauravi.com' },
+  { label: 'PHONE', type: 'phone', detail: '+1 (212) 555-0182' },
 ]
 
 const fadeInUp = {
@@ -13,6 +13,10 @@ const fadeInUp = {
 }
 
 export function Contact() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <section id="contact" className="section-padding">
       <div className="max-w-7xl mx-auto">
@@ -56,46 +60,39 @@ export function Contact() {
         {/* Contact Links */}
         <div className="space-y-0 max-w-2xl">
           {contacts.map((contact, index) => (
-            <motion.a
+            <motion.div
               key={contact.label}
-              href={contact.link}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex items-center justify-between border-t border-gray-800 py-5 md:py-6 group hover:bg-gray-900/30 transition-colors px-4 -mx-4"
+              className="flex items-center justify-between border-t border-gray-800 py-5 md:py-6 group px-4 -mx-4"
             >
               <span className="text-sm text-gray-400 tracking-widest">
                 {contact.label}
               </span>
-              <span className="text-gray-500 group-hover:text-white transition-colors">
-                ↗
+              <span className="text-gray-500">
+                {contact.type === 'email' ? contact.detail : contact.detail}
               </span>
-            </motion.a>
+            </motion.div>
           ))}
           <div className="border-t border-gray-800" />
         </div>
 
-        {/* Direct Contact */}
+        {/* Social Links */}
         <motion.div
           {...fadeInUp}
           className="mt-16 lg:mt-24 pt-12 lg:pt-16 border-t border-gray-800"
         >
           <p className="text-sm text-gray-500 mb-6 lg:mb-8 tracking-widest uppercase">
-            Or reach me directly
+            Social
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 md:gap-16">
-            <a
-              href="mailto:gauravi@ahire.photography"
-              className="text-lg lg:text-xl text-gray-300 hover:text-white transition-colors underline underline-offset-4"
-            >
-              gauravi@ahire.photography
-            </a>
             <a
               href="https://instagram.com/brucebanner"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg lg:text-xl text-gray-300 hover:text-white transition-colors underline underline-offset-4"
+              className="text-lg lg:text-xl text-gray-300 hover:text-white transition-colors underline underline-offset-4 decoration-gray-600 hover:decoration-white"
             >
               Instagram
             </a>
@@ -103,9 +100,9 @@ export function Contact() {
               href="https://vimeo.com/brucebanner"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg lg:text-xl text-gray-300 hover:text-white transition-colors underline underline-offset-4"
+              className="text-lg lg:text-xl text-gray-300 hover:text-white transition-colors underline underline-offset-4 decoration-gray-600 hover:decoration-white"
             >
-              Vimeo
+              Twitter / X
             </a>
           </div>
         </motion.div>
@@ -123,6 +120,17 @@ export function Contact() {
           </p>
         </motion.footer>
       </div>
+
+      {/* Back to top */}
+      <button
+        onClick={scrollToTop}
+        className="back-to-top"
+        aria-label="Back to top"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </button>
     </section>
   )
 }

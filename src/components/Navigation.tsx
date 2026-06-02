@@ -8,6 +8,7 @@ const navItems = [
   { id: 'skills', label: 'Skills' },
   { id: 'work', label: 'Work' },
   { id: 'education', label: 'Education' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 const socialLinks = [
@@ -24,7 +25,7 @@ export function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth', block: sectionId === 'skills' ? 'center' : 'start' })
       setMobileMenuOpen(false)
     }
   }

@@ -26,7 +26,7 @@ export function About() {
             <img
               src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1200"
               alt="Early work - Street photography"
-              className="w-full h-auto grayscale"
+              className="w-full h-auto md:grayscale md:hover:grayscale-0 transition-all duration-700"
             />
             <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
               PARSONS SCHOOL OF DESIGN - NEW YORK / USA
@@ -87,7 +87,7 @@ export function About() {
             <img
               src="https://images.pexels.com/photos/1264210/pexels-photo-1264210.jpeg?auto=compress&cs=tinysrgb&w=1200"
               alt="Magnum Photos Office"
-              className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-auto md:grayscale md:hover:grayscale-0 transition-all duration-700"
             />
             <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
               MAGNUM PHOTOS - LONDON / UK
@@ -101,7 +101,7 @@ export function About() {
             <img
               src="https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1200"
               alt="Gauravi shooting for National Geographic"
-              className="w-full h-auto grayscale"
+              className="w-full h-auto md:grayscale md:hover:grayscale-0 transition-all duration-700"
             />
             <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
               SHOOTING FOR NATIONAL GEOGRAPHIC - PATAGONIA / AR<br />

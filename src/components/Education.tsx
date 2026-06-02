@@ -32,7 +32,7 @@ export function Education() {
               <img
                 src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="MIT Campus"
-                className="w-full h-auto grayscale"
+                className="w-full h-auto md:grayscale md:hover:grayscale-0 transition-all duration-700"
               />
               <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
                 MIT - CAMBRIDGE / USA
@@ -85,7 +85,7 @@ export function Education() {
               <img
                 src="https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="Parsons School of Design"
-                className="w-full h-auto grayscale"
+                className="w-full h-auto md:grayscale md:hover:grayscale-0 transition-all duration-700"
               />
               <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
                 PARSONS SCHOOL OF DESIGN - NEW YORK / USA
@@ -99,7 +99,7 @@ export function Education() {
               <img
                 src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="International Center of Photography"
-                className="w-full h-auto grayscale"
+                className="w-full h-auto md:grayscale md:hover:grayscale-0 transition-all duration-700"
               />
               <p className="mt-4 text-xs text-gray-500 tracking-widest uppercase">
                 ICP - NEW YORK / USA

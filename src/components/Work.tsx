@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { Lightbox } from './Lightbox'
+import { ProjectExpanded } from './ProjectExpanded'
 
-type MediaItem = {
+export type MediaItem = {
   type: 'image' | 'video'
   src: string
   alt?: string
   span?: 'tall' | 'wide' | 'square'
 }
 
-type Project = {
+export type Project = {
   title: string
   year: string
   location: string
@@ -15,7 +18,6 @@ type Project = {
   media: MediaItem[]
 }
 
-// Placeholder projects — replace media URLs with your own photos/videos.
 const projects: Project[] = [
   {
     title: 'Monsoon Diaries',
@@ -26,6 +28,12 @@ const projects: Project[] = [
       { type: 'image', src: 'https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=1200&q=80', alt: 'Misty mountain', span: 'tall' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80', alt: 'Rain landscape', span: 'wide' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80', alt: 'Lake view', span: 'square' },
+      { type: 'image', src: 'https://picsum.photos/seed/monsoon4/800/1200', alt: 'Tea estates', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/monsoon5/1200/800', alt: 'Monsoon road', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/monsoon6/800/800', alt: 'Mist valley', span: 'square' },
+      { type: 'image', src: 'https://picsum.photos/seed/monsoon7/1200/800', alt: 'Forest trail', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/monsoon8/800/1200', alt: 'River view', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/monsoon9/800/800', alt: 'Hill station', span: 'square' },
     ],
   },
   {
@@ -37,6 +45,11 @@ const projects: Project[] = [
       { type: 'image', src: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&q=80', alt: 'Portrait', span: 'tall' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&q=80', alt: 'Textiles', span: 'square' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&q=80', alt: 'Artisan hands', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/tradition4/800/1200', alt: 'Craft work', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/tradition5/1200/800', alt: 'Weaving loom', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/tradition6/800/800', alt: 'Market colors', span: 'square' },
+      { type: 'image', src: 'https://picsum.photos/seed/tradition7/1200/800', alt: 'Craft village', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/tradition8/800/1200', alt: 'Handicrafts', span: 'tall' },
     ],
   },
   {
@@ -45,9 +58,14 @@ const projects: Project[] = [
     location: 'Mumbai, India',
     description: 'A short film and photo series exploring the rhythm of the city between midnight and dawn.',
     media: [
-      { type: 'video', src: 'https://cdn.coverr.co/videos/coverr-night-traffic-in-the-city-2633/1080p.mp4', span: 'wide' },
+      { type: 'video', src: 'https://assets.mixkit.co/videos/1146/1146-720.mp4', span: 'wide' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80', alt: 'Neon street', span: 'square' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1200&q=80', alt: 'City lights', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/city4/1200/800', alt: 'Night skyline', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/city5/800/800', alt: 'Street lights', span: 'square' },
+      { type: 'image', src: 'https://picsum.photos/seed/city6/800/1200', alt: 'City street', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/city7/1200/800', alt: 'Rainy night', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/city8/800/800', alt: 'Neon sign', span: 'square' },
     ],
   },
   {
@@ -59,6 +77,12 @@ const projects: Project[] = [
       { type: 'image', src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80', alt: 'Wedding', span: 'square' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80', alt: 'Couple', span: 'tall' },
       { type: 'image', src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80', alt: 'Ceremony', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/wedding4/800/1200', alt: 'Decorations', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/wedding5/800/800', alt: 'Rituals', span: 'square' },
+      { type: 'image', src: 'https://picsum.photos/seed/wedding6/1200/800', alt: 'Reception', span: 'wide' },
+      { type: 'image', src: 'https://picsum.photos/seed/wedding7/800/800', alt: 'Family portrait', span: 'square' },
+      { type: 'image', src: 'https://picsum.photos/seed/wedding8/800/1200', alt: 'Mehendi ceremony', span: 'tall' },
+      { type: 'image', src: 'https://picsum.photos/seed/wedding9/1200/800', alt: 'Celebration', span: 'wide' },
     ],
   },
 ]
@@ -77,6 +101,9 @@ const spanClass: Record<NonNullable<MediaItem['span']>, string> = {
 }
 
 export function Work() {
+  const [lightbox, setLightbox] = useState<{ projectIndex: number; mediaIndex: number } | null>(null)
+  const [expandedProject, setExpandedProject] = useState<number | null>(null)
+
   return (
     <section id="work" className="section-padding">
       <div className="max-w-7xl mx-auto">
@@ -122,35 +149,75 @@ export function Work() {
 
               {/* Media grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[16rem] md:auto-rows-[20rem] gap-3 md:gap-4">
-                {project.media.map((item, i) => (
-                  <div
+                {project.media.slice(0, 3).map((item, i) => (
+                  <button
                     key={i}
-                    className={`relative overflow-hidden bg-gray-900 ${spanClass[item.span ?? 'square']}`}
+                    onClick={() => setLightbox({ projectIndex: index, mediaIndex: i })}
+                    className={`relative overflow-hidden bg-gray-900 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/30 ${spanClass[item.span ?? 'square']}`}
                   >
                     {item.type === 'image' ? (
                       <img
                         src={item.src}
                         alt={item.alt ?? project.title}
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] hover:!scale-105"
+                        className="w-full h-full object-cover md:grayscale md:hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.02] hover:!scale-105"
                       />
                     ) : (
-                      <video
-                        src={item.src}
-                        muted
-                        loop
-                        playsInline
-                        autoPlay
-                        className="w-full h-full object-cover"
-                      />
+                      <div className="relative w-full h-full">
+                        <video
+                          src={item.src}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          controls
+                          className="w-full h-full object-cover md:grayscale md:hover:grayscale-0 transition-all duration-700"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="rounded-full bg-black/50 p-2">
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     )}
-                  </div>
+                  </button>
                 ))}
+              </div>
+
+              {/* More button */}
+              <div className="mt-6 text-right">
+                <button
+                  onClick={() => setExpandedProject(index)}
+                  className="inline-flex items-center gap-2 px-6 py-2 text-sm text-gray-400 border border-gray-700 rounded-full hover:text-white hover:border-white transition-colors"
+                >
+                  More
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
               </div>
             </motion.article>
           ))}
         </div>
       </div>
+
+      {lightbox !== null && (
+        <Lightbox
+          media={projects[lightbox.projectIndex].media}
+          index={lightbox.mediaIndex}
+          onClose={() => setLightbox(null)}
+          onIndexChange={(i) => setLightbox({ projectIndex: lightbox.projectIndex, mediaIndex: i })}
+        />
+      )}
+
+      {expandedProject !== null && (
+        <ProjectExpanded
+          project={projects[expandedProject]}
+          onClose={() => setExpandedProject(null)}
+        />
+      )}
     </section>
   )
 }
