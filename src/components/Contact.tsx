@@ -116,7 +116,7 @@ export function Contact() {
             © {new Date().getFullYear()} Gauravi Ahire Photography. All rights reserved.
           </p>
           <p className="text-xs text-gray-600">
-            New York / London
+            Paris / Mumbai
           </p>
         </motion.footer>
       </div>
