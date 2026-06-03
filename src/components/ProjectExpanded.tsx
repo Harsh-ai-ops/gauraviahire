@@ -89,11 +89,13 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
     const item = project.media[index]
     if (item.type === 'video') return null
     return (
-      <img
-        src={item.src}
-        alt=""
-        loading="eager"
-        className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110"
+      <div
+        className="absolute inset-0 w-full h-full blur-xl opacity-40 scale-110"
+        style={{
+          backgroundImage: `url(${item.src})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
       />
     )
   }
