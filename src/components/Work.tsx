@@ -127,8 +127,7 @@ export function Work() {
             <motion.div
               key={project.title}
               initial={false}
-              className="group project-enter"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group"
             >
               {/* Project header */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 mb-8 border-t border-gray-800 pt-8">
