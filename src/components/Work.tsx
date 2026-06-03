@@ -122,7 +122,7 @@ export function Work() {
         </motion.h2>
 
         {/* Projects */}
-        <div className="space-y-32 md:space-y-52">
+        <div className="space-y-24 md:space-y-40">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
