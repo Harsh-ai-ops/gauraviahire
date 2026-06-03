@@ -122,12 +122,13 @@ export function Work() {
         </motion.h2>
 
         {/* Projects */}
-        <div className="space-y-24 md:space-y-40">
+        <div className="space-y-32 md:space-y-52">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={false}
-              className="group"
+              className={`group project-enter${index === 1 ? ' pb-16 md:pb-24' : ''}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Project header */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 mb-8 border-t border-gray-800 pt-8">
