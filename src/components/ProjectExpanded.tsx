@@ -65,6 +65,16 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
     return () => clearInterval(timer)
   }, [current, project.media.length]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Preload next image so transitions are instant
+  useEffect(() => {
+    const next = (current + 1) % project.media.length
+    const item = project.media[next]
+    if (item.type === 'image') {
+      const img = new Image()
+      img.src = item.src
+    }
+  }, [current, project.media])
+
   const handleAnimationEnd = () => setPrev(null)
 
   function renderMedia(index: number) {
@@ -72,7 +82,7 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
     if (item.type === 'video') {
       return <video src={item.src} controls autoPlay muted playsInline className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg" />
     }
-    return <img src={item.src} alt={item.alt ?? ''} className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg" />
+    return <img src={item.src} alt={item.alt ?? ''} loading="eager" className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg" />
   }
 
   function renderBg(index: number) {
@@ -82,6 +92,7 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
       <img
         src={item.src}
         alt=""
+        loading="eager"
         className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110"
       />
     )
