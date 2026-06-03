@@ -96,9 +96,9 @@ const fadeInUp = {
 }
 
 const spanClass: Record<NonNullable<MediaItem['span']>, string> = {
-  tall: 'md:row-span-2 aspect-auto',
-  wide: 'md:col-span-2 aspect-auto',
-  square: 'aspect-auto',
+  tall: 'md:row-span-2 md:aspect-[3/4] aspect-auto',
+  wide: 'md:col-span-2 md:aspect-[16/10] aspect-auto',
+  square: 'md:aspect-square aspect-auto',
 }
 
 export function Work() {
@@ -124,8 +124,12 @@ export function Work() {
         {/* Projects */}
         <div className="space-y-16 md:space-y-32">
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={project.title}
+              initial={{ y: 30 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
               className="group"
             >
               {/* Project header */}
@@ -195,7 +199,7 @@ export function Work() {
                   </svg>
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
