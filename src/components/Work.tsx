@@ -186,7 +186,7 @@ export function Work() {
               </div>
 
               {/* More button */}
-              <div className="mt-6 text-center md:text-right">
+              <div className="relative z-10 mt-6 text-center md:text-right">
                 <button
                   onClick={() => setExpandedProject(index)}
                   className="inline-flex items-center gap-2 px-6 py-2 text-sm text-gray-400 border border-gray-700 rounded-full hover:text-white hover:border-white transition-colors"
