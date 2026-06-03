@@ -99,15 +99,12 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
     const item = project.media[index]
     if (item.type === 'video') return null
     return (
-      <>
-        <img
-          src={item.src}
-          alt=""
-          loading="eager"
-          className="absolute inset-0 w-full h-full object-cover scale-110"
-        />
-        <div className="absolute inset-0 backdrop-blur-xl opacity-40" />
-      </>
+      <img
+        src={item.src}
+        alt=""
+        loading="eager"
+        className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110"
+      />
     )
   }
 
@@ -118,19 +115,19 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
       </button>
 
       {prev !== null && loaded.has(prev) && (
-        <div key={`bg-${prev}`} className="absolute inset-0 z-0" onAnimationEnd={handleAnimationEnd}>
+        <div key={`bg-${prev}`} className="absolute inset-0 z-0 animate-fadeOut" onAnimationEnd={handleAnimationEnd}>
           {renderBg(prev)}
           <div className="absolute inset-0 z-[1] flex items-center justify-center">
-            <div className="animate-fadeOut">{renderMedia(prev)}</div>
+            <div>{renderMedia(prev)}</div>
           </div>
         </div>
       )}
 
       {loaded.has(current) && (
-        <div key={`bg-${current}`} className="absolute inset-0 z-[2]">
+        <div key={`bg-${current}`} className="absolute inset-0 z-[2] animate-fadeIn">
           {renderBg(current)}
           <div className="absolute inset-0 z-[3] flex items-center justify-center">
-            <div className="animate-fadeIn">{renderMedia(current)}</div>
+            <div>{renderMedia(current)}</div>
           </div>
         </div>
       )}
