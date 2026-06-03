@@ -1,5 +1,5 @@
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import type { Project, MediaItem } from './Work'
 
 interface ProjectExpandedProps {
@@ -56,6 +56,26 @@ function ExpandedLightbox({ media, index, onClose }: { media: MediaItem[]; index
 function Slideshow({ project, onClose }: { project: Project; onClose: () => void }) {
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
+  const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]))
+
+  const preload = useCallback((index: number) => {
+    if (loaded.has(index)) return
+    const item = project.media[index]
+    if (item.type !== 'image') {
+      setLoaded((s) => new Set(s).add(index))
+      return
+    }
+    const img = new Image()
+    img.onload = () => {
+      img.decode().then(() => setLoaded((s) => new Set(s).add(index))).catch(() => setLoaded((s) => new Set(s).add(index)))
+    }
+    img.src = item.src
+  }, [loaded, project.media])
+
+  useEffect(() => {
+    preload(current)
+    preload((current + 1) % project.media.length)
+  }, [current, preload])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -63,17 +83,7 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
       setCurrent((i) => (i + 1) % project.media.length)
     }, 5000)
     return () => clearInterval(timer)
-  }, [current, project.media.length]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Preload next image so transitions are instant
-  useEffect(() => {
-    const next = (current + 1) % project.media.length
-    const item = project.media[next]
-    if (item.type === 'image') {
-      const img = new Image()
-      img.src = item.src
-    }
-  }, [current, project.media])
+  }, [current, project.media.length])
 
   const handleAnimationEnd = () => setPrev(null)
 
@@ -89,13 +99,11 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
     const item = project.media[index]
     if (item.type === 'video') return null
     return (
-      <div
-        className="absolute inset-0 w-full h-full blur-xl opacity-40 scale-110"
-        style={{
-          backgroundImage: `url(${item.src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
+      <img
+        src={item.src}
+        alt=""
+        loading="eager"
+        className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110"
       />
     )
   }
@@ -106,7 +114,7 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
         <X className="h-6 w-6" />
       </button>
 
-      {prev !== null && (
+      {prev !== null && loaded.has(prev) && (
         <div key={`bg-${prev}`} className="absolute inset-0 z-0" onAnimationEnd={handleAnimationEnd}>
           {renderBg(prev)}
           <div className="absolute inset-0 z-[1] flex items-center justify-center">
@@ -115,12 +123,14 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
         </div>
       )}
 
-      <div key={`bg-${current}`} className="absolute inset-0 z-[2]">
-        {renderBg(current)}
-        <div className="absolute inset-0 z-[3] flex items-center justify-center">
-          <div className="animate-fadeIn">{renderMedia(current)}</div>
+      {loaded.has(current) && (
+        <div key={`bg-${current}`} className="absolute inset-0 z-[2]">
+          {renderBg(current)}
+          <div className="absolute inset-0 z-[3] flex items-center justify-center">
+            <div className="animate-fadeIn">{renderMedia(current)}</div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
