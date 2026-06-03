@@ -1,5 +1,5 @@
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { Project, MediaItem } from './Work'
 
 interface ProjectExpandedProps {
@@ -53,7 +53,87 @@ function ExpandedLightbox({ media, index, onClose }: { media: MediaItem[]; index
   )
 }
 
+function Slideshow({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [current, setCurrent] = useState(0)
+  const [prev, setPrev] = useState<number | null>(null)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPrev(current)
+      setCurrent((i) => (i + 1) % project.media.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [current, project.media.length]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleAnimationEnd = () => setPrev(null)
+
+  function renderMedia(index: number) {
+    const item = project.media[index]
+    if (item.type === 'video') {
+      return <video src={item.src} controls autoPlay muted playsInline className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg" />
+    }
+    return <img src={item.src} alt={item.alt ?? ''} className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg" />
+  }
+
+  function renderBg(index: number) {
+    return (
+      <div
+        className="absolute inset-0 bg-cover bg-center blur-xl opacity-40 scale-110"
+        style={{ backgroundImage: `url(${project.media[index].src})` }}
+      />
+    )
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden">
+      <button onClick={onClose} className="absolute top-4 right-4 z-20 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 transition-colors">
+        <X className="h-6 w-6" />
+      </button>
+
+      {prev !== null && (
+        <div key={`bg-${prev}`} className="absolute inset-0 z-0" onAnimationEnd={handleAnimationEnd}>
+          {renderBg(prev)}
+          <div className="absolute inset-0 z-[1] flex items-center justify-center">
+            <div className="animate-fadeOut">{renderMedia(prev)}</div>
+          </div>
+        </div>
+      )}
+
+      <div key={`bg-${current}`} className="absolute inset-0 z-[2]">
+        {renderBg(current)}
+        <div className="absolute inset-0 z-[3] flex items-center justify-center">
+          <div className="animate-fadeIn">{renderMedia(current)}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function ProjectExpanded({ project, onClose }: ProjectExpandedProps) {
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    if (project.audioSrc) {
+      audioRef.current = new Audio(project.audioSrc)
+      audioRef.current.loop = true
+      audioRef.current.play().catch(() => {})
+    }
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+    }
+  }, [project.audioSrc])
+
+  if (project.slideshow) {
+    return <Slideshow project={project} onClose={onClose} />
+  }
+
+  return <ExpandedGrid project={project} onClose={onClose} />
+}
+
+function ExpandedGrid({ project, onClose }: ProjectExpandedProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   return (

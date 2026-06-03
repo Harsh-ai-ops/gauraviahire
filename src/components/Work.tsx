@@ -16,6 +16,8 @@ export type Project = {
   location: string
   description: string
   media: MediaItem[]
+  audioSrc?: string
+  slideshow?: boolean
 }
 
 const projects: Project[] = [
@@ -73,6 +75,8 @@ const projects: Project[] = [
     year: '2023',
     location: 'Udaipur, India',
     description: 'Three days of rituals, light and quiet moments between a family reunited.',
+    audioSrc: '/gwed/bayaan-sherazam-safar_kkXH4wn9.mp3',
+    slideshow: true,
     media: [
       { type: 'image', src: '/gwed/5a8e7ecc-0de7-442a-b716-c1f5a0c3c342.JPG', alt: 'Wedding portrait', span: 'tall' },
       { type: 'image', src: '/gwed/74ef4953-08f6-433c-8c76-cf6d342cdab4.JPG', alt: 'Wedding ceremony', span: 'wide' },
@@ -92,9 +96,9 @@ const fadeInUp = {
 }
 
 const spanClass: Record<NonNullable<MediaItem['span']>, string> = {
-  tall: 'md:row-span-2 md:aspect-[3/4] aspect-auto',
-  wide: 'md:col-span-2 md:aspect-[16/10] aspect-auto',
-  square: 'md:aspect-square aspect-auto',
+  tall: 'md:row-span-2 aspect-auto',
+  wide: 'md:col-span-2 aspect-auto',
+  square: 'aspect-auto',
 }
 
 export function Work() {
@@ -120,12 +124,8 @@ export function Work() {
         {/* Projects */}
         <div className="space-y-16 md:space-y-32">
           {projects.map((project, index) => (
-            <motion.article
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.1 }}
               className="group"
             >
               {/* Project header */}
@@ -175,9 +175,9 @@ export function Work() {
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z" />
                             </svg>
-                          </div>
                         </div>
                       </div>
+                    </div>
                     )}
                   </button>
                 ))}
@@ -195,7 +195,7 @@ export function Work() {
                   </svg>
                 </button>
               </div>
-            </motion.article>
+            </div>
           ))}
         </div>
       </div>
