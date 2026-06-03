@@ -103,7 +103,7 @@ function Slideshow({ project, onClose }: { project: Project; onClose: () => void
         src={item.src}
         alt=""
         loading="eager"
-        className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110"
+        className="absolute inset-0 w-full h-full object-cover scale-110"
       />
     )
   }
