@@ -75,7 +75,7 @@ const projects: Project[] = [
     year: '2023',
     location: 'Udaipur, India',
     description: 'Three days of rituals, light and quiet moments between a family reunited.',
-    audioSrc: '/gwed/bayaan-sherazam-safar_kkXH4wn9.mp3',
+    audioSrc: '/gwed/navjot-ahuja-khat-official-audio_wV1XYBRY.mp3',
     slideshow: true,
     media: [
       { type: 'image', src: '/gwed/5a8e7ecc-0de7-442a-b716-c1f5a0c3c342.JPG', alt: 'Wedding portrait', span: 'tall' },
